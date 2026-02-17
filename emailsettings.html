@@ -25,7 +25,12 @@
               Choose which emails you’d like to receive. You can update these preferences anytime.
             </p>
 
-            <form method="POST" action="https://www.w3schools.com/action_page.php">
+            <!-- Alert (hidden by default) -->
+            <div id="saveAlert" class="alert alert-success d-none" role="alert">
+              Your email preferences have been saved.
+            </div>
+
+            <form id="preferencesForm" method="POST" action="https://www.w3schools.com/action_page.php">
 
               <fieldset>
                 <legend class="h6 mb-3">Manage Your Communication Preferences</legend>
@@ -89,6 +94,7 @@
   </div>
 
   <script>
+    // Select/Deselect All logic
     const selectAllCheckbox = document.getElementById("selectAll");
     const emailOptions = document.querySelectorAll(".email-option");
 
@@ -96,6 +102,14 @@
       emailOptions.forEach(function (checkbox) {
         checkbox.checked = selectAllCheckbox.checked;
       });
+    });
+
+    // Show alert on submit (then allow form to submit normally)
+    const form = document.getElementById("preferencesForm");
+    const saveAlert = document.getElementById("saveAlert");
+
+    form.addEventListener("submit", function () {
+      saveAlert.classList.remove("d-none");
     });
   </script>
 
