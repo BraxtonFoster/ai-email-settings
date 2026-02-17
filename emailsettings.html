@@ -11,29 +11,37 @@
 
   <form method="POST" action="https://www.w3schools.com/action_page.php">
 
+    <!-- Select / Deselect All -->
     <div>
-      <input type="checkbox" id="criticalAlerts" name="criticalAlerts">
+      <input type="checkbox" id="selectAll">
+      <label for="selectAll"><strong>Select / Deselect All</strong></label>
+    </div>
+
+    <hr>
+
+    <div>
+      <input type="checkbox" class="email-option" id="criticalAlerts" name="criticalAlerts">
       <label for="criticalAlerts">
         Critical alerts and notifications about your tax return
       </label>
     </div>
 
     <div>
-      <input type="checkbox" id="specialOffers" name="specialOffers">
+      <input type="checkbox" class="email-option" id="specialOffers" name="specialOffers">
       <label for="specialOffers">
         Information about special offers for tax services
       </label>
     </div>
 
     <div>
-      <input type="checkbox" id="irsNotifications" name="irsNotifications">
+      <input type="checkbox" class="email-option" id="irsNotifications" name="irsNotifications">
       <label for="irsNotifications">
         Receive notifications of IRS changes and deadlines
       </label>
     </div>
 
     <div>
-      <input type="checkbox" id="monthlyNewsletter" name="monthlyNewsletter">
+      <input type="checkbox" class="email-option" id="monthlyNewsletter" name="monthlyNewsletter">
       <label for="monthlyNewsletter">
         Learn from a monthly tax newsletter with tax news and tips
       </label>
@@ -44,6 +52,17 @@
     <button type="submit">Save Preferences</button>
 
   </form>
+
+  <script>
+    const selectAllCheckbox = document.getElementById("selectAll");
+    const emailOptions = document.querySelectorAll(".email-option");
+
+    selectAllCheckbox.addEventListener("change", function () {
+      emailOptions.forEach(function (checkbox) {
+        checkbox.checked = selectAllCheckbox.checked;
+      });
+    });
+  </script>
 
 </body>
 </html>
