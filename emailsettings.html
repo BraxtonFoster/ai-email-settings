@@ -20,7 +20,10 @@
         <div class="card shadow-sm">
           <div class="card-body p-4">
 
-            <h1 class="h3 mb-3">Email Preferences</h1>
+            <h1 class="h3 mb-2">Email Preferences</h1>
+            <p class="text-muted mb-4">
+              Choose which emails you’d like to receive. You can update these preferences anytime.
+            </p>
 
             <form method="POST" action="https://www.w3schools.com/action_page.php">
 
@@ -28,37 +31,38 @@
                 <legend class="h6 mb-3">Manage Your Communication Preferences</legend>
 
                 <!-- Select / Deselect All -->
-                <div class="form-check mb-3">
-                  <input class="form-check-input" type="checkbox" id="selectAll" name="selectAll">
-                  <label class="form-check-label fw-semibold" for="selectAll">
-                    Select / Deselect All
-                  </label>
+                <div class="d-flex align-items-center justify-content-between border rounded p-3 mb-3">
+                  <div class="form-check m-0">
+                    <input class="form-check-input" type="checkbox" id="selectAll" name="selectAll">
+                    <label class="form-check-label fw-semibold" for="selectAll">
+                      Select / Deselect All
+                    </label>
+                  </div>
+                  <span class="badge text-bg-light">Quick toggle</span>
                 </div>
 
-                <hr class="my-3">
-
-                <div class="form-check mb-2">
+                <div class="form-check mb-3">
                   <input class="form-check-input email-option" type="checkbox" id="criticalAlerts" name="criticalAlerts">
                   <label class="form-check-label" for="criticalAlerts">
                     Critical alerts and notifications about your tax return
                   </label>
                 </div>
 
-                <div class="form-check mb-2">
+                <div class="form-check mb-3">
                   <input class="form-check-input email-option" type="checkbox" id="specialOffers" name="specialOffers">
                   <label class="form-check-label" for="specialOffers">
                     Information about special offers for tax services
                   </label>
                 </div>
 
-                <div class="form-check mb-2">
+                <div class="form-check mb-3">
                   <input class="form-check-input email-option" type="checkbox" id="irsNotifications" name="irsNotifications">
                   <label class="form-check-label" for="irsNotifications">
                     Receive notifications of IRS changes and deadlines
                   </label>
                 </div>
 
-                <div class="form-check mb-2">
+                <div class="form-check mb-1">
                   <input class="form-check-input email-option" type="checkbox" id="monthlyNewsletter" name="monthlyNewsletter">
                   <label class="form-check-label" for="monthlyNewsletter">
                     Learn from a monthly tax newsletter with tax news and tips
@@ -70,6 +74,10 @@
               <button type="submit" class="btn btn-primary mt-4 w-100">
                 Save Preferences
               </button>
+
+              <p class="small text-muted mt-3 mb-0">
+                Saving will submit your selections to a test endpoint for verification.
+              </p>
 
             </form>
 
