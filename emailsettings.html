@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="form-check mb-3">
-                  <input class="form-check-input email-option" type="checkbox" id="criticalAlerts" name="criticalAlerts">
+                  <input class="form-check-input email-option" type="checkbox" id="criticalAlerts" name="criticalAlerts" checked>
                   <label class="form-check-label" for="criticalAlerts">
                     Critical alerts and notifications about your tax return
                   </label>
@@ -94,23 +94,36 @@
   </div>
 
   <script>
-    // Select/Deselect All logic
     const selectAllCheckbox = document.getElementById("selectAll");
     const emailOptions = document.querySelectorAll(".email-option");
+    const form = document.getElementById("preferencesForm");
+    const saveAlert = document.getElementById("saveAlert");
 
+    // Update Select All checkbox based on individual checkbox states
+    function updateSelectAllState() {
+      const allChecked = Array.from(emailOptions).every(cb => cb.checked);
+      selectAllCheckbox.checked = allChecked;
+    }
+
+    // Select/Deselect All controls individual checkboxes
     selectAllCheckbox.addEventListener("change", function () {
       emailOptions.forEach(function (checkbox) {
         checkbox.checked = selectAllCheckbox.checked;
       });
     });
 
-    // Show alert on submit (then allow form to submit normally)
-    const form = document.getElementById("preferencesForm");
-    const saveAlert = document.getElementById("saveAlert");
+    // If user manually changes any checkbox, keep Select All accurate
+    emailOptions.forEach(function (checkbox) {
+      checkbox.addEventListener("change", updateSelectAllState);
+    });
 
+    // Show alert on submit (then allow form to submit normally)
     form.addEventListener("submit", function () {
       saveAlert.classList.remove("d-none");
     });
+
+    // Run once on load so Select All reflects default checkbox states
+    updateSelectAllState();
   </script>
 
 </body>
